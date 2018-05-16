@@ -12,8 +12,10 @@ services:
       - ./conf/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./log/:/var/log/dnmp/:rw
     deploy:
-      placement:
-        constraints: [node.role == manager]
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      mode: replicated
     networks:
       - net-php
 
@@ -24,6 +26,7 @@ services:
       - "9000"
     deploy:
       replicas: 5
+      mode: replicated
       restart_policy:
         condition: on-failure
       resources:

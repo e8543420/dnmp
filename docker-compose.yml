@@ -15,7 +15,7 @@ services:
       - net-php
 
   php:
-    build: ./php/php72/
+    image: e8543420/php72:latest
     container_name: dnmp-php
     expose:
       - "9000"

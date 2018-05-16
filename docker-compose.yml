@@ -62,6 +62,8 @@ services:
         constraints: [node.role == manager]
     networks:
       - net-php
+      - net-mysql
+      - net-redis
       
   redis:
     image: redis:latest
